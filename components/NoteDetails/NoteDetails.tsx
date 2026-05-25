@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 
-import { deleteNote } from "../../lib/api";
+import {  fetchNoteById } from "../../lib/api";
 import css from "./NoteDetails.module.css";
 
 export default function NoteDetailsClient() {
@@ -17,7 +17,7 @@ export default function NoteDetailsClient() {
     error,
   } = useQuery({
     queryKey: ["note", id],
-    queryFn: () =>deleteNote(id),
+    queryFn: () =>fetchNoteById(id),
   });
 
   if (isLoading) {
